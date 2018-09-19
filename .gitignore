@@ -1,0 +1,9 @@
+*
+!.gitignore
+
+!interactive/*
+
+!main.el
+!keybinds.el
+!variables.el
+!hooks.el
