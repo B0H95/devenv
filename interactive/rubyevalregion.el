@@ -16,3 +16,8 @@
     (goto-char start)
     (insert a)
     (deactivate-mark)))
+
+(defun ruby-eval-region-message (start end)
+  "Evaluates the ruby code in region and prints output in the minibuffer"
+  (interactive "r")
+  (display-message-or-buffer (ruby-eval-region-get start end)))

@@ -3,9 +3,20 @@
              '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-(load-file "./variables.el")
-(load-file "./keybinds.el")
-(load-file "./hooks.el")
+;; <FUCK GNU AND FUCK THE FREE SOFTWARE FOUNDATION>
+(defun get-the-file-name (filename)
+  (expand-file-name filename (file-name-directory load-file-name)))
+(defun load-the-file (filename)
+  (load-file (get-the-file-name filename)))
+(defun the-file-exists-p (filename)
+  (file-exists-p (get-the-file-name filename)))
+;; </FUCK GNU AND FUCK THE FREE SOFTWARE FOUNDATION>
 
-(if (file-exists-p "./package-specific.el")
-    (load-file "./package-specific.el"))
+(load-the-file "./interactive/rubyevalregion.el")
+
+(load-the-file "./variables.el")
+(load-the-file "./keybinds.el")
+(load-the-file "./hooks.el")
+
+(if (the-file-exists-p "./package-specific.el")
+    (load-the-file "./package-specific.el"))
