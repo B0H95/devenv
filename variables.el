@@ -6,6 +6,7 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 (setq next-line-add-newlines nil)
 (setq-default indent-tabs-mode nil)
 (setq ruby-indent-level 4)
