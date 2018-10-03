@@ -1,5 +1,7 @@
 (global-linum-mode 1)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+;(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (menu-bar-mode 0)
 (setq scroll-step 1)
 (setq inhibit-splash-screen t)
