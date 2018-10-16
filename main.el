@@ -12,7 +12,8 @@
   (file-exists-p (get-the-file-name filename)))
 ;; </FUCK GNU AND FUCK THE FREE SOFTWARE FOUNDATION>
 
-(load-the-file "./interactive/rubyevalregion.el")
+(load-the-file "./interactive/ruby-eval-region.el")
+(load-the-file "./interactive/c-generators.el")
 
 (load-the-file "./variables.el")
 (load-the-file "./keybinds.el")

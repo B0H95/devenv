@@ -1,7 +1,9 @@
 *
+!*/
 !.gitignore
 
 !interactive/*
+
 
 !main.el
 !keybinds.el
