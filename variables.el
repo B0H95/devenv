@@ -1,4 +1,5 @@
 (global-linum-mode 1)
+(global-auto-revert-mode 1)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 ;(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
