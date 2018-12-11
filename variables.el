@@ -19,3 +19,7 @@
 (add-hook 'html-mode-hook
           (lambda ()
             (set (make-local-variable 'sgml-basic-offset) 4)))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (c-set-offset 'innamespace [0])))
