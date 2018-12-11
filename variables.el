@@ -16,3 +16,6 @@
 (c-set-offset 'case-label 4)
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-conservatively 10000 scroll-preserve-screen-position 1)
+(add-hook 'html-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-basic-offset) 4)))
