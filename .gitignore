@@ -3,6 +3,7 @@
 !.gitignore
 
 !interactive/*
+!3rdparty/*
 
 
 !main.el

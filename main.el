@@ -15,6 +15,8 @@
 (load-the-file "./interactive/ruby-eval-region.el")
 (load-the-file "./interactive/c-generators.el")
 
+(load-the-file "./3rdparty/ace-jump-mode.el")
+
 (load-the-file "./variables.el")
 (load-the-file "./keybinds.el")
 (load-the-file "./hooks.el")
