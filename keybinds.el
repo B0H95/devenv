@@ -8,6 +8,9 @@
 (global-set-key (kbd "<backtab>") 'undo)
 (global-set-key (kbd "<C-tab>") 'indent-for-tab-command)
 
+(global-set-key (kbd "M-.") 'other-window)
+(global-set-key (kbd "M-,") (lambda () (interactive) (other-window -1)))
+
 ;; Unfuck the minibuffer completion after having rebound TAB
 (add-hook 'minibuffer-setup-hook
           (lambda ()
