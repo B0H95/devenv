@@ -16,6 +16,8 @@
 (global-set-key (kbd "M-.") 'other-window)
 (global-set-key (kbd "M-,") (lambda () (interactive) (other-window -1)))
 
+(global-set-key (kbd "M-q") 'undo)
+
 ;; Unfuck the minibuffer completion after having rebound TAB
 (add-hook 'minibuffer-setup-hook
           (lambda ()
