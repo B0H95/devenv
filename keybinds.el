@@ -1,5 +1,7 @@
 ;; Unbind
 (global-unset-key (kbd "C-x o"))
+(global-unset-key (kbd "C-_"))
+(global-unset-key (kbd "C-x u"))
 
 ;; Bind
 
