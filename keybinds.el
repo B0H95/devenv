@@ -3,6 +3,7 @@
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "C-x u"))
 (global-unset-key (kbd "C-k"))
+(global-unset-key (kbd "C-z"))
 
 ;; Bind
 
