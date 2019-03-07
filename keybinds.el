@@ -2,6 +2,7 @@
 (global-unset-key (kbd "C-x o"))
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "C-x u"))
+(global-unset-key (kbd "C-k"))
 
 ;; Bind
 
@@ -19,6 +20,7 @@
 (global-set-key (kbd "M-,") (lambda () (interactive) (other-window -1)))
 
 (global-set-key (kbd "M-q") 'undo)
+(global-set-key (kbd "M-k") 'kill-whole-line)
 
 ;; Unfuck the minibuffer completion after having rebound TAB
 (add-hook 'minibuffer-setup-hook
