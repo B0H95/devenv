@@ -24,3 +24,5 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (c-set-offset 'innamespace [0])))
+(setq ace-jump-mode-move-keys
+      (loop for i from ?a to ?z collect i))
