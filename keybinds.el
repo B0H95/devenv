@@ -9,6 +9,8 @@
 (global-unset-key (kbd "M-j")) ;; Ghetto newline
 (global-unset-key (kbd "C-a")) ;; Move to beginning of line
 (global-unset-key (kbd "C-e")) ;; Move to end of line
+(global-unset-key (kbd "C-j")) ;; Another ghetto newline
+(global-unset-key (kbd "C-o")) ;; Yet another ghetto newline
 
 ;; Bind
 
@@ -31,8 +33,9 @@
 (global-set-key (kbd "M-j") 'previous-line)
 (global-set-key (kbd "M-n") 'next-line)
 
-(global-set-key (kbd "M-a") 'move-beginning-of-line)
-(global-set-key (kbd "M-e") 'move-end-of-line)
+(global-set-key (kbd "M-m") 'move-beginning-of-line)
+(global-set-key (kbd "M-i") 'back-to-indentation)
+(global-set-key (kbd "M-o") 'move-end-of-line)
 
 ;; Unfuck the minibuffer completion after having rebound TAB
 (add-hook 'minibuffer-setup-hook
