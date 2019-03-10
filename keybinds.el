@@ -11,6 +11,8 @@
 (global-unset-key (kbd "C-e")) ;; Move to end of line
 (global-unset-key (kbd "C-j")) ;; Another ghetto newline
 (global-unset-key (kbd "C-o")) ;; Yet another ghetto newline
+(global-unset-key (kbd "M-a")) ;; Moves backward unpredictably
+(global-unset-key (kbd "M-e")) ;; Moves forward unpredictably
 
 ;; Bind
 
