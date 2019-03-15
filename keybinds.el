@@ -81,6 +81,7 @@
 (require 'shell) ;; omg why even
 (define-key shell-mode-map (kbd "C-i") 'comint-previous-input)
 (define-key shell-mode-map (kbd "C-j") 'comint-next-input)
+(define-key shell-mode-map (kbd "M-c") 'comint-send-input)
 
 ;; TODO: Where do we put the following?
 ;; - upcase-word
