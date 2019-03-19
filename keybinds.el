@@ -83,6 +83,8 @@
 (define-key shell-mode-map (kbd "C-j") 'comint-next-input)
 (define-key shell-mode-map (kbd "M-c") 'comint-send-input)
 
+(define-key minibuffer-local-must-match-map (kbd "M-c") 'minibuffer-complete-and-exit)
+
 ;; TODO: Where do we put the following?
 ;; - upcase-word
 ;; - downcase-word
