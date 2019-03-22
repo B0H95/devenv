@@ -85,6 +85,9 @@
 
 (define-key minibuffer-local-must-match-map (kbd "M-c") 'minibuffer-complete-and-exit)
 
+;; OMG could not the ENTER button just send a generic ENTER-signal or something???
+(define-key isearch-mode-map (kbd "M-c") 'isearch-exit)
+
 ;; TODO: Where do we put the following?
 ;; - upcase-word
 ;; - downcase-word
