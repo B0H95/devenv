@@ -17,6 +17,7 @@
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-conservatively 10000 scroll-preserve-screen-position 1)
 (set-cursor-color "#fff")
+(setq next-screen-context-lines 33)
 (add-hook 'html-mode-hook
           (lambda ()
             (set (make-local-variable 'sgml-basic-offset) 4)))
