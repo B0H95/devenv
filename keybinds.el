@@ -23,6 +23,8 @@
 (global-unset-key (kbd "C-f")) ;; Move forward char
 (global-unset-key (kbd "C-b")) ;; Move backward char
 (global-unset-key (kbd "C-d")) ;; Delete char forward
+(global-unset-key (kbd "C-x C-c")) ;; Biggest source of frustration I have ever seen
+(global-unset-key (kbd "C-M-q")) ;; Whatever this is, I don't need it
 
 ;; Bind
 
@@ -88,6 +90,11 @@
 
 ;; OMG could not the ENTER button just send a generic ENTER-signal or something???
 (define-key isearch-mode-map (kbd "M-c") 'isearch-exit)
+
+(global-set-key (kbd "C-M-q") 'save-buffers-kill-terminal)
+;; YES I DID MEAN "REBIND THE KEY GGLLOOBBAALLYY", THAT WHAT GLOBAL-SET-KEY SHOULD MEAN
+(define-key emacs-lisp-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
+(define-key c-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
 
 ;; TODO: Where do we put the following?
 ;; - upcase-word
