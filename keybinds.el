@@ -44,6 +44,7 @@
 
 (global-set-key (kbd "M-a") 'backward-kill-word)
 (global-set-key (kbd "M-s") 'kill-word)
+(define-key nroff-mode-map (kbd "M-s") 'kill-word)
 (global-set-key (kbd "M-d") 'kill-whole-line)
 (global-set-key (kbd "C-a") 'backward-delete-char-untabify)
 (global-set-key (kbd "C-s") 'delete-char)
