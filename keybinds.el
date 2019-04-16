@@ -25,6 +25,7 @@
 (global-unset-key (kbd "C-d")) ;; Delete char forward
 (global-unset-key (kbd "C-x C-c")) ;; Biggest source of frustration I have ever seen
 (global-unset-key (kbd "C-M-q")) ;; Whatever this is, I don't need it
+(global-unset-key (kbd "C-x C-z")) ;; Why would anyone need this?
 
 ;; Bind
 
