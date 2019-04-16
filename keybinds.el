@@ -32,74 +32,39 @@
 (global-set-key (kbd "C-c r") 'ruby-eval-region-message)
 (global-set-key (kbd "C-c R") 'ruby-eval-region-replace)
 (global-set-key (kbd "C-c I") 'ruby-eval-region-insert)
-
 (global-set-key (kbd "<tab>") 'dabbrev-expand)
 (global-set-key (kbd "<backtab>") 'undo)
 (global-set-key (kbd "<C-tab>") 'indent-for-tab-command)
-
 (global-set-key (kbd "M-.") 'other-window)
 (global-set-key (kbd "M-,") (lambda () (interactive) (other-window -1)))
-
 (global-set-key (kbd "M-q") 'undo)
-
 (global-set-key (kbd "M-a") 'backward-kill-word)
 (global-set-key (kbd "M-s") 'kill-word)
-(define-key nroff-mode-map (kbd "M-s") 'kill-word)
 (global-set-key (kbd "M-d") 'kill-whole-line)
 (global-set-key (kbd "C-a") 'backward-delete-char-untabify)
 (global-set-key (kbd "C-s") 'delete-char)
-
 (global-set-key (kbd "M-i") 'previous-line)
 (global-set-key (kbd "M-j") 'next-line)
-
 (global-set-key (kbd "M-k") 'backward-word)
 (global-set-key (kbd "M-l") 'forward-word)
 (global-set-key (kbd "C-k") 'backward-char)
 (global-set-key (kbd "C-l") 'forward-char)
-
 (global-set-key (kbd "M-m") 'ace-jump-char-mode)
 (global-set-key (kbd "M-o") 'back-to-indentation)
 (global-set-key (kbd "M-p") 'move-end-of-line)
-(define-key shell-mode-map (kbd "M-p") 'move-end-of-line)
-(define-key markdown-mode-map (kbd "M-p") 'move-end-of-line)
-(define-key nroff-mode-map (kbd "M-p") 'move-end-of-line)
-
 (global-set-key (kbd "M-n") 'isearch-forward)
-(define-key isearch-mode-map (kbd "M-n") 'isearch-repeat-forward)
 (global-set-key (kbd "M-b") 'isearch-backward)
-(define-key isearch-mode-map (kbd "M-b") 'isearch-repeat-backward)
-
 (global-set-key (kbd "M-h") 'scroll-up-command)
 (global-set-key (kbd "M-u") 'scroll-down-command)
-
 (global-set-key (kbd "M-g") 'goto-line)
-
 (global-set-key (kbd "M-SPC") 'set-mark-command)
-
 (global-set-key (kbd "M-w") 'kill-ring-save)
 (global-set-key (kbd "M-e") 'yank)
 (global-set-key (kbd "M-r") 'kill-region)
 (global-set-key (kbd "M-t") 'yank-pop)
-
 (global-set-key (kbd "C-p") 'recenter-top-bottom)
-
 (global-set-key (kbd "M-c") 'newline)
-
-(require 'shell) ;; omg why even
-(define-key shell-mode-map (kbd "C-i") 'comint-previous-input)
-(define-key shell-mode-map (kbd "C-j") 'comint-next-input)
-(define-key shell-mode-map (kbd "M-c") 'comint-send-input)
-
-(define-key minibuffer-local-must-match-map (kbd "M-c") 'minibuffer-complete-and-exit)
-(define-key minibuffer-local-map (kbd "M-c") 'exit-minibuffer) ;; HUEEEEEEEEEEEEEEEEEEEEEEEEEE
-
-;; OMG could not the ENTER button just send a generic ENTER-signal or something???
-(define-key isearch-mode-map (kbd "M-c") 'isearch-exit)
-
 (global-set-key (kbd "C-M-q") 'save-buffers-kill-terminal)
-;; YES I DID MEAN "REBIND THE KEY GGLLOOBBAALLYY", THAT WHAT GLOBAL-SET-KEY SHOULD MEAN
-(define-key emacs-lisp-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
-(define-key c-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
 
 ;; TODO: Where do we put the following?
 ;; - upcase-word
@@ -110,3 +75,24 @@
 (add-hook 'minibuffer-setup-hook
           (lambda ()
             (local-set-key (kbd "<tab>") 'minibuffer-complete)))
+
+(require 'shell) ;; omg why even
+(define-key shell-mode-map (kbd "C-i") 'comint-previous-input)
+(define-key shell-mode-map (kbd "C-j") 'comint-next-input)
+(define-key shell-mode-map (kbd "M-c") 'comint-send-input)
+(define-key shell-mode-map (kbd "M-p") 'move-end-of-line)
+
+(define-key minibuffer-local-must-match-map (kbd "M-c") 'minibuffer-complete-and-exit)
+(define-key minibuffer-local-map (kbd "M-c") 'exit-minibuffer) ;; HUEEEEEEEEEEEEEEEEEEEEEEEEEE
+;; OMG could not the ENTER button just send a generic ENTER-signal or something???
+(define-key isearch-mode-map (kbd "M-c") 'isearch-exit)
+
+(define-key isearch-mode-map (kbd "M-n") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "M-b") 'isearch-repeat-backward)
+
+;; Put keybindings with a high probability of failing last
+(define-key emacs-lisp-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
+(define-key c-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
+(define-key markdown-mode-map (kbd "M-p") 'move-end-of-line)
+(define-key nroff-mode-map (kbd "M-p") 'move-end-of-line)
+(define-key nroff-mode-map (kbd "M-s") 'kill-word)

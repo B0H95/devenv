@@ -18,8 +18,8 @@
 (load-the-file "./3rdparty/ace-jump-mode.el")
 
 (load-the-file "./variables.el")
-(load-the-file "./keybinds.el")
 (load-the-file "./hooks.el")
+(load-the-file "./keybinds.el")
 
 (if (the-file-exists-p "./package-specific.el")
     (load-the-file "./package-specific.el"))
