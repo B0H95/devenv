@@ -60,6 +60,8 @@
 (global-set-key (kbd "M-o") 'back-to-indentation)
 (global-set-key (kbd "M-p") 'move-end-of-line)
 (define-key shell-mode-map (kbd "M-p") 'move-end-of-line)
+(define-key markdown-mode-map (kbd "M-p") 'move-end-of-line)
+(define-key nroff-mode-map (kbd "M-p") 'move-end-of-line)
 
 (global-set-key (kbd "M-n") 'isearch-forward)
 (define-key isearch-mode-map (kbd "M-n") 'isearch-repeat-forward)
