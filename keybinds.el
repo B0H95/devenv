@@ -25,6 +25,16 @@
     (delete-region p1 p2)
     (delete-char 1)))
 
+(defun execute-region-contents-as-shell-command-and-print-output (start end)
+  (interactive "r")
+  (let (input output))
+  (if (use-region-p)
+      (progn
+        (setq input (buffer-substring start end))
+        (delete-region start end)
+        (setq output (shell-command-to-string input))
+        (insert output))))
+
 ;; Unbind
 (unbind-key "C-x o")
 (unbind-key "C-_")
@@ -34,29 +44,31 @@
 (unbind-key "M-<")
 (unbind-key "M->")
 (unbind-key "C-z")
-(unbind-key "C-p") ;; Move up
-(unbind-key "C-n") ;; Move down
-(unbind-key "M-j") ;; Ghetto newline
-(unbind-key "C-a") ;; Move to beginning of line
-(unbind-key "C-e") ;; Move to end of line
-(unbind-key "C-j") ;; Another ghetto newline
-(unbind-key "C-o") ;; Yet another ghetto newline
-(unbind-key "M-a") ;; Moves backward unpredictably
-(unbind-key "M-e") ;; Moves forward unpredictably
-(unbind-key "M-g g") ;; Shitty move-to-line
-(unbind-key "C-SPC") ;; Start selection
-(unbind-key "M-t") ;; Transpose word (useless)
-(unbind-key "M-y") ;; Yank-pop (moved)
-(unbind-key "M-v") ;; Scroll up
-(unbind-key "C-v") ;; Scroll down
-(unbind-key "M-f") ;; Move forward word
-(unbind-key "C-f") ;; Move forward char
-(unbind-key "C-b") ;; Move backward char
-(unbind-key "C-d") ;; Delete char forward
-(unbind-key "C-x C-c") ;; Biggest source of frustration I have ever seen
-(unbind-key "C-M-q") ;; Whatever this is, I don't need it
-(unbind-key "C-x C-z") ;; Why would anyone need this?
+(unbind-key "C-p")
+(unbind-key "C-n")
+(unbind-key "M-j")
+(unbind-key "C-a")
+(unbind-key "C-e")
+(unbind-key "C-j")
+(unbind-key "C-o")
+(unbind-key "M-a")
+(unbind-key "M-e")
+(unbind-key "M-g g")
+(unbind-key "C-SPC")
+(unbind-key "M-t")
+(unbind-key "M-y")
+(unbind-key "M-v")
+(unbind-key "C-v")
+(unbind-key "M-f")
+(unbind-key "C-f")
+(unbind-key "C-b")
+(unbind-key "C-d")
+(unbind-key "C-x C-c")
+(unbind-key "C-M-q")
+(unbind-key "C-x C-z")
 (unbind-key "C-x f")
+(unbind-key "C-s")
+(unbind-key "M-s")
 
 ;; Bind
 (bind-key* "<tab>" (lambda () (interactive) (if (minibufferp) (call-interactively 'minibuffer-complete) (call-interactively 'dabbrev-expand))))
@@ -111,6 +123,7 @@
                        (select-frame-set-input-focus frame1)
                        (call-interactively 'previous-buffer)
                        (select-frame-set-input-focus frame2))))
+(bind-key* "M-!" 'execute-region-contents-as-shell-command-and-print-output)
 
 (bind-key "M-b" 'isearch-repeat-backward isearch-mode-map)
 (bind-key "M-n" 'isearch-repeat-forward isearch-mode-map)
