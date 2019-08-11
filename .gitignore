@@ -2,11 +2,8 @@
 !*/
 !.gitignore
 
-!interactive/*
 !3rdparty/*
-
 
 !main.el
 !keybinds.el
 !variables.el
-!hooks.el
