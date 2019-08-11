@@ -1,98 +1,117 @@
+;; Various helper functions that unfuck emacs default behavior
+(defun kill-word-without-fucking-up-the-clipboard (_)
+  (interactive "p")
+  (delete-region
+   (point)
+   (progn
+     (forward-word)
+     (point))))
+
+(defun backward-kill-word-without-fucking-up-the-clipboard (_)
+  (interactive "p")
+  (delete-region
+   (point)
+   (progn
+     (forward-word -1)
+     (point))))
+
+(defun kill-whole-line-without-fucking-up-the-clipboard ()
+  (interactive)
+  (let (p1 p2)
+    (beginning-of-line)
+    (setq p1 (point))
+    (end-of-line)
+    (setq p2 (point))
+    (delete-region p1 p2)
+    (delete-char 1)))
+
 ;; Unbind
-(global-unset-key (kbd "C-x o"))
-(global-unset-key (kbd "C-_"))
-(global-unset-key (kbd "C-x u"))
-(global-unset-key (kbd "C-k"))
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-p")) ;; Move up
-(global-unset-key (kbd "C-n")) ;; Move down
-(global-unset-key (kbd "M-j")) ;; Ghetto newline
-(global-unset-key (kbd "C-a")) ;; Move to beginning of line
-(global-unset-key (kbd "C-e")) ;; Move to end of line
-(global-unset-key (kbd "C-j")) ;; Another ghetto newline
-(global-unset-key (kbd "C-o")) ;; Yet another ghetto newline
-(global-unset-key (kbd "M-a")) ;; Moves backward unpredictably
-(global-unset-key (kbd "M-e")) ;; Moves forward unpredictably
-(global-unset-key (kbd "M-g g")) ;; Shitty move-to-line
-(global-unset-key (kbd "C-SPC")) ;; Start selection
-(global-unset-key (kbd "M-t")) ;; Transpose word (useless)
-(global-unset-key (kbd "M-y")) ;; Yank-pop (moved)
-(global-unset-key (kbd "M-v")) ;; Scroll up
-(global-unset-key (kbd "C-v")) ;; Scroll down
-(global-unset-key (kbd "M-f")) ;; Move forward word
-(global-unset-key (kbd "C-f")) ;; Move forward char
-(global-unset-key (kbd "C-b")) ;; Move backward char
-(global-unset-key (kbd "C-d")) ;; Delete char forward
-(global-unset-key (kbd "C-x C-c")) ;; Biggest source of frustration I have ever seen
-(global-unset-key (kbd "C-M-q")) ;; Whatever this is, I don't need it
-(global-unset-key (kbd "C-x C-z")) ;; Why would anyone need this?
+(unbind-key "C-x o")
+(unbind-key "C-_")
+(unbind-key "C-x u")
+(unbind-key "C-k")
+(unbind-key "C-z")
+(unbind-key "M-<")
+(unbind-key "M->")
+(unbind-key "C-z")
+(unbind-key "C-p") ;; Move up
+(unbind-key "C-n") ;; Move down
+(unbind-key "M-j") ;; Ghetto newline
+(unbind-key "C-a") ;; Move to beginning of line
+(unbind-key "C-e") ;; Move to end of line
+(unbind-key "C-j") ;; Another ghetto newline
+(unbind-key "C-o") ;; Yet another ghetto newline
+(unbind-key "M-a") ;; Moves backward unpredictably
+(unbind-key "M-e") ;; Moves forward unpredictably
+(unbind-key "M-g g") ;; Shitty move-to-line
+(unbind-key "C-SPC") ;; Start selection
+(unbind-key "M-t") ;; Transpose word (useless)
+(unbind-key "M-y") ;; Yank-pop (moved)
+(unbind-key "M-v") ;; Scroll up
+(unbind-key "C-v") ;; Scroll down
+(unbind-key "M-f") ;; Move forward word
+(unbind-key "C-f") ;; Move forward char
+(unbind-key "C-b") ;; Move backward char
+(unbind-key "C-d") ;; Delete char forward
+(unbind-key "C-x C-c") ;; Biggest source of frustration I have ever seen
+(unbind-key "C-M-q") ;; Whatever this is, I don't need it
+(unbind-key "C-x C-z") ;; Why would anyone need this?
+(unbind-key "C-x f")
 
 ;; Bind
+(bind-key* "<tab>" (lambda () (interactive) (if (minibufferp) (call-interactively 'minibuffer-complete) (call-interactively 'dabbrev-expand))))
+(bind-key* "<backtab>" 'undo)
+(bind-key* "M->" 'indent-for-tab-command)
+(bind-key* "M-," 'backward-char)
+(bind-key* "M-." 'forward-char)
+(bind-key* "M-q" 'undo)
+(bind-key* "M-a" 'backward-kill-word-without-fucking-up-the-clipboard)
+(bind-key* "M-s" 'kill-word-without-fucking-up-the-clipboard)
+(bind-key* "M-d" 'kill-whole-line-without-fucking-up-the-clipboard)
+(bind-key* "M-z" 'backward-delete-char-untabify)
+(bind-key* "M-x" 'delete-char)
+(bind-key* "M-i" 'previous-line)
+(bind-key* "M-j" 'next-line)
+(bind-key* "M-k" 'backward-word)
+(bind-key* "M-l" 'forward-word)
+(bind-key* "M-o" 'back-to-indentation)
+(bind-key* "M-p" 'move-end-of-line)
+(bind-key* "M-n" 'isearch-forward)
+(bind-key* "M-b" 'isearch-backward)
+(bind-key* "M-h" 'scroll-up-command)
+(bind-key* "M-u" 'scroll-down-command)
+(bind-key* "M-g" 'goto-line)
+(bind-key* "M-SPC" 'set-mark-command)
+(bind-key* "M-w" (lambda () (interactive) (call-interactively 'simpleclip-copy) (call-interactively 'keyboard-quit)))
+(bind-key* "M-e" 'simpleclip-paste)
+(bind-key* "M-r" 'simpleclip-cut)
+(bind-key* "M-ö" 'recenter-top-bottom)
+(bind-key* "M-c" (lambda () (interactive) (if (minibufferp) (call-interactively 'minibuffer-complete-and-exit) (call-interactively 'newline))))
+(bind-key* "C-M-q" 'save-buffers-kill-terminal)
+(bind-key* "M-§" 'execute-extended-command)
+(bind-key* "M--" 'previous-buffer)
+(bind-key* "C--" 'next-buffer)
+(bind-key* "C-u" 'beginning-of-buffer)
+(bind-key* "C-h" 'end-of-buffer)
+(bind-key* "C-z" 'downcase-word)
+(bind-key* "C-x" 'upcase-word)
+(bind-key* "C-c" 'capitalize-word)
+(bind-key* "C-M-s" 'save-buffer)
+(bind-key* "C-M-w" 'write-file)
+(bind-key* "C-M-f" 'find-file)
+(bind-key* "C-M-q" 'kill-this-buffer)
+(bind-key* "C-M-b" 'switch-to-buffer)
+(bind-key* "<backspace>" 'delete-other-windows)
+(bind-key* "C-?" 'describe-key)
+(bind-key* "<f1>" (lambda () (interactive)
+                     (let (frame1 frame2)
+                       (setq frame1 (selected-frame))
+                       (switch-to-buffer-other-frame (current-buffer))
+                       (setq frame2 (selected-frame))
+                       (select-frame-set-input-focus frame1)
+                       (call-interactively 'previous-buffer)
+                       (select-frame-set-input-focus frame2))))
 
-(global-set-key (kbd "C-c r") 'ruby-eval-region-message)
-(global-set-key (kbd "C-c R") 'ruby-eval-region-replace)
-(global-set-key (kbd "C-c I") 'ruby-eval-region-insert)
-(global-set-key (kbd "<tab>") 'dabbrev-expand)
-(global-set-key (kbd "<backtab>") 'undo)
-(global-set-key (kbd "<C-tab>") 'indent-for-tab-command)
-(global-set-key (kbd "M-.") 'other-window)
-(global-set-key (kbd "M-,") (lambda () (interactive) (other-window -1)))
-(global-set-key (kbd "M-q") 'undo)
-(global-set-key (kbd "M-a") 'backward-kill-word)
-(global-set-key (kbd "M-s") 'kill-word)
-(global-set-key (kbd "M-d") 'kill-whole-line)
-(global-set-key (kbd "C-a") 'backward-delete-char-untabify)
-(global-set-key (kbd "C-s") 'delete-char)
-(global-set-key (kbd "M-i") 'previous-line)
-(global-set-key (kbd "M-j") 'next-line)
-(global-set-key (kbd "M-k") 'backward-word)
-(global-set-key (kbd "M-l") 'forward-word)
-(global-set-key (kbd "C-k") 'backward-char)
-(global-set-key (kbd "C-l") 'forward-char)
-(global-set-key (kbd "M-m") 'ace-jump-char-mode)
-(global-set-key (kbd "M-o") 'back-to-indentation)
-(global-set-key (kbd "M-p") 'move-end-of-line)
-(global-set-key (kbd "M-n") 'isearch-forward)
-(global-set-key (kbd "M-b") 'isearch-backward)
-(global-set-key (kbd "M-h") 'scroll-up-command)
-(global-set-key (kbd "M-u") 'scroll-down-command)
-(global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "M-SPC") 'set-mark-command)
-(global-set-key (kbd "M-w") 'kill-ring-save)
-(global-set-key (kbd "M-e") 'yank)
-(global-set-key (kbd "M-r") 'kill-region)
-(global-set-key (kbd "M-t") 'yank-pop)
-(global-set-key (kbd "C-p") 'recenter-top-bottom)
-(global-set-key (kbd "M-c") 'newline)
-(global-set-key (kbd "C-M-q") 'save-buffers-kill-terminal)
-
-;; TODO: Where do we put the following?
-;; - upcase-word
-;; - downcase-word
-;; - capitalize-word
-
-;; Unfuck the minibuffer completion after having rebound TAB
-(add-hook 'minibuffer-setup-hook
-          (lambda ()
-            (local-set-key (kbd "<tab>") 'minibuffer-complete)))
-
-(require 'shell) ;; omg why even
-(define-key shell-mode-map (kbd "C-i") 'comint-previous-input)
-(define-key shell-mode-map (kbd "C-j") 'comint-next-input)
-(define-key shell-mode-map (kbd "M-c") 'comint-send-input)
-(define-key shell-mode-map (kbd "M-p") 'move-end-of-line)
-
-(define-key minibuffer-local-must-match-map (kbd "M-c") 'minibuffer-complete-and-exit)
-(define-key minibuffer-local-map (kbd "M-c") 'exit-minibuffer) ;; HUEEEEEEEEEEEEEEEEEEEEEEEEEE
-;; OMG could not the ENTER button just send a generic ENTER-signal or something???
-(define-key isearch-mode-map (kbd "M-c") 'isearch-exit)
-
-(define-key isearch-mode-map (kbd "M-n") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "M-b") 'isearch-repeat-backward)
-
-;; Put keybindings with a high probability of failing last
-(define-key emacs-lisp-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
-(define-key c-mode-map (kbd "C-M-q") 'save-buffers-kill-terminal)
-(define-key markdown-mode-map (kbd "M-p") 'move-end-of-line)
-(define-key nroff-mode-map (kbd "M-p") 'move-end-of-line)
-(define-key nroff-mode-map (kbd "M-s") 'kill-word)
+(bind-key "M-b" 'isearch-repeat-backward isearch-mode-map)
+(bind-key "M-n" 'isearch-repeat-forward isearch-mode-map)
+(bind-key "M-c" 'isearch-exit isearch-mode-map)
