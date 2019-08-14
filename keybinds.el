@@ -69,6 +69,7 @@
 (unbind-key "C-x f")
 (unbind-key "C-s")
 (unbind-key "M-s")
+(unbind-key "M-m")
 
 ;; Bind
 (bind-key* "<tab>" (lambda () (interactive) (if (minibufferp) (call-interactively 'minibuffer-complete) (call-interactively 'dabbrev-expand))))
@@ -94,7 +95,7 @@
 (bind-key* "M-u" 'scroll-down-command)
 (bind-key* "M-g" 'goto-line)
 (bind-key* "M-SPC" 'set-mark-command)
-(bind-key* "M-w" (lambda () (interactive) (call-interactively 'simpleclip-copy) (call-interactively 'keyboard-quit)))
+(bind-key* "M-w" 'simpleclip-copy)
 (bind-key* "M-e" 'simpleclip-paste)
 (bind-key* "M-r" 'simpleclip-cut)
 (bind-key* "M-ö" 'recenter-top-bottom)
