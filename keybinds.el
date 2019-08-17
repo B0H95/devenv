@@ -95,7 +95,7 @@
 (bind-key* "M-u" 'scroll-down-command)
 (bind-key* "M-g" 'goto-line)
 (bind-key* "M-SPC" 'set-mark-command)
-(bind-key* "M-w" 'simpleclip-copy)
+(bind-key* "M-w" (lambda () (interactive) (call-interactively 'simpleclip-copy) (deactivate-mark)))
 (bind-key* "M-e" 'simpleclip-paste)
 (bind-key* "M-r" 'simpleclip-cut)
 (bind-key* "M-ö" 'recenter-top-bottom)
