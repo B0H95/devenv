@@ -1,9 +1,0 @@
-*
-!*/
-!.gitignore
-
-!3rdparty/*
-
-!main.el
-!keybinds.el
-!variables.el
