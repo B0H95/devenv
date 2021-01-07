@@ -15,3 +15,4 @@
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 8)
 (setq-default c-default-style "linux")
+(custom-set-faces '(default ((t (:inherit nil :stipple nil :background "LemonChiffon1" :foreground "SystemWindowText" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Courier New")))))
