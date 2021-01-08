@@ -16,3 +16,5 @@
 (setq-default tab-width 8)
 (setq-default c-default-style "linux")
 (set-background-color "LemonChiffon1")
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(setq default-buffer-file-coding-system 'utf-8-unix)
