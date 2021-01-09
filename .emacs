@@ -12,7 +12,7 @@
 (setq scroll-preserve-screen-position 1)
 (setq next-screen-context-lines 33)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 8)
 (setq-default c-default-style "linux")
 (set-background-color "LemonChiffon1")
