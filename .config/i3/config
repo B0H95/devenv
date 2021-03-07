@@ -6,7 +6,7 @@ default_floating_border pixel 2
 hide_edge_borders smart
 focus_follows_mouse no
 mouse_warping none
-font -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+font pango:Terminus (TTF) Medium 9
 
 mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -20,6 +20,7 @@ mode "resize" {
 }
 
 bar {
+        font pango:Terminus (TTF) Medium 9
         status_command i3status
         position top
         colors {
