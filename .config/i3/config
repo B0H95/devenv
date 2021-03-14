@@ -73,9 +73,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+space exec i3-sensible-terminal
+bindsym $mod+BackSpace kill
+bindsym $mod+Return exec --no-startup-id dmenu_run -i -fn 'Terminus (TTF)-12' -nb '#01190B' -nf '#99FFAA' -sb '#024D07' -sf '#99FFAA'
+
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -84,18 +85,21 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-bindsym $mod+h split h
-bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+r mode "resize"
+
+bindsym $mod+period split h
+bindsym $mod+comma split v
+bindsym $mod+minus fullscreen toggle
+
+bindsym $mod+Shift+F7 layout stacking
+bindsym $mod+Shift+F6 layout tabbed
+bindsym $mod+Shift+F5 layout toggle split
+
+bindsym $mod+Shift+Tab floating toggle
+bindsym $mod+Tab focus mode_toggle
+bindsym $mod+Shift+F9 mode "resize"
+bindsym $mod+Shift+F10 reload
+bindsym $mod+Shift+F11 restart
+bindsym $mod+Shift+F12 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
